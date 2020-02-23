@@ -1,9 +1,9 @@
 import React from "react";
 
-const BookShelfChanger = () => {
+const BookShelfChanger = ({ handleOnChangeBookShelf }) => {
   return (
     <div className="book-shelf-changer">
-      <select>
+      <select onChange={e => handleOnChangeBookShelf(e)}>
         <option value="move" disabled>
           Move to...
         </option>

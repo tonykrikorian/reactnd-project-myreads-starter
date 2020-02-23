@@ -6,7 +6,12 @@ import OpenSearchButton from "../Components/OpenSearchButton";
 class MainContainer extends Component {
   state = {};
   render() {
-    const { currentlyReading, wantToRead, read } = this.props;
+    const {
+      currentlyReading,
+      wantToRead,
+      read,
+      handleOnChangeBookShelf
+    } = this.props;
     return (
       <div className="list-books">
         <MainBar />
@@ -15,9 +20,18 @@ class MainContainer extends Component {
             <Bookshelf
               title={"Currently Reading"}
               dataBooks={currentlyReading}
+              handleOnChangeBookShelf={handleOnChangeBookShelf}
             />
-            <Bookshelf title={"Want to Read"} dataBooks={wantToRead} />
-            <Bookshelf title={"Done"} dataBooks={read} />
+            <Bookshelf
+              title={"Want to Read"}
+              dataBooks={wantToRead}
+              handleOnChangeBookShelf={handleOnChangeBookShelf}
+            />
+            <Bookshelf
+              title={"Done"}
+              dataBooks={read}
+              handleOnChangeBookShelf={handleOnChangeBookShelf}
+            />
           </div>
         </div>
         <OpenSearchButton />

@@ -83,7 +83,13 @@ class BooksApp extends React.Component {
     console.log(data);
   };
 
-  handleOnChangeBookShelf = value => {};
+  handleOnChangeBookShelf = e => {
+    const {
+      currentTarget: { value }
+    } = e;
+
+    console.log(value);
+  };
   render() {
     const {
       bookshelfs: { currentlyReading, wantToRead, read }
@@ -96,7 +102,12 @@ class BooksApp extends React.Component {
           <Route
             exact
             path="/"
-            render={() => <MainContainer {...data} />}
+            render={() => (
+              <MainContainer
+                {...data}
+                handleOnChangeBookShelf={this.handleOnChangeBookShelf}
+              />
+            )}
           ></Route>
           <Route path="/search" render={() => <SearchPage />}></Route>
         </Switch>
