@@ -21,6 +21,7 @@ const Bookshelf = ({ title, dataBooks, handleOnChangeBookShelf }) => {
                   ></div>
                   <BookShelfChanger
                     handleOnChangeBookShelf={handleOnChangeBookShelf}
+                    bookId={book.id}
                   />
                 </div>
                 <div className="book-title">{book.title}</div>

@@ -83,12 +83,13 @@ class BooksApp extends React.Component {
     console.log(data);
   };
 
-  handleOnChangeBookShelf = e => {
+  handleOnChangeBookShelf = (e, bookId) => {
     const {
       currentTarget: { value }
     } = e;
 
     console.log(value);
+    console.log(bookId);
   };
   render() {
     const {
