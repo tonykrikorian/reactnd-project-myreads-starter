@@ -34,12 +34,18 @@ class BooksApp extends React.Component {
 
   handleOnChangeBookShelf = (e, bookId) => {
     const allBooks = [...this.state.allBooks];
-    const state = { ...this.state };
+    const bookshelfs = { ...this.state.bookshelfs };
     const {
-      currentTarget: { value }
+      currentTarget: { value: shelfToMove }
     } = e;
-
-    console.log(bookId);
+    const bookToMove = allBooks.find(x => x.id === bookId);
+    const { shelf } = bookToMove;
+    bookToMove.shelf = shelfToMove;
+    bookshelfs[shelf][bookToMove] = bookToMove;
+    console.log({ bookToMove, shelf, shelfToMove });
+    bookshelfs[shelfToMove].push(bookToMove);
+    bookshelfs[shelf] = bookshelfs[shelf].filter(x => x.shelf == shelf);
+    this.setState({ bookshelfs });
   };
   render() {
     const {
