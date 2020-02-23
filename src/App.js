@@ -19,7 +19,7 @@ class BooksApp extends React.Component {
     showSearchPage: false,
 
     bookshelfs: {
-      CurrentlyReading: [
+      currentlyReading: [
         {
           id: 1,
           title: "To Kill a Mockingbird",
@@ -35,7 +35,7 @@ class BooksApp extends React.Component {
             "http://books.google.com/books/content?id=yDtCuFHXbAYC&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE72RRiTR6U5OUg3IY_LpHTL2NztVWAuZYNFE8dUuC0VlYabeyegLzpAnDPeWxE6RHi0C2ehrR9Gv20LH2dtjpbcUcs8YnH5VCCAH0Y2ICaKOTvrZTCObQbsfp4UbDqQyGISCZfGN&source=gbs_api"
         }
       ],
-      WantToRead: [
+      wantToRead: [
         {
           id: 3,
           title: "1776",
@@ -52,7 +52,7 @@ class BooksApp extends React.Component {
         }
       ],
 
-      Read: [
+      read: [
         {
           id: 5,
           title: "The Hobbit",
@@ -82,12 +82,14 @@ class BooksApp extends React.Component {
     const data = await getAll();
     console.log(data);
   };
+
+  handleOnChangeBookShelf = value => {};
   render() {
     const {
-      bookshelfs: { CurrentlyReading, WantToRead, Read }
+      bookshelfs: { currentlyReading, wantToRead, read }
     } = this.state;
 
-    const data = { CurrentlyReading, WantToRead, Read };
+    const data = { currentlyReading, wantToRead, read };
     return (
       <div className="app">
         <Switch>
