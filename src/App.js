@@ -1,10 +1,12 @@
 import React from "react";
 // import * as BooksAPI from './BooksAPI'
 import "./App.css";
-import MainBar from "./Components/mainBar";
-import Bookshelf from "./Components/Bookshelf";
+
 import { getAll } from "./BooksAPI";
-import OpenSearchButton from "./Components/OpenSearchButton";
+
+import MainContainer from "./Components/MainContainer";
+import { Router, Route, Switch } from "react-router-dom";
+import SearchPage from "./Components/SearchPage";
 
 class BooksApp extends React.Component {
   state = {
@@ -85,22 +87,17 @@ class BooksApp extends React.Component {
       bookshelfs: { CurrentlyReading, WantToRead, Read }
     } = this.state;
 
+    const data = { CurrentlyReading, WantToRead, Read };
     return (
       <div className="app">
-        <div className="list-books">
-          <MainBar />
-          <div className="list-books-content">
-            <div>
-              <Bookshelf
-                title={"Currently Reading"}
-                dataBooks={CurrentlyReading}
-              />
-              <Bookshelf title={"Want to Read"} dataBooks={WantToRead} />
-              <Bookshelf title={"Done"} dataBooks={Read} />
-            </div>
-          </div>
-          <OpenSearchButton />
-        </div>
+        <Switch>
+          <Route
+            exact
+            path="/"
+            render={() => <MainContainer {...data} />}
+          ></Route>
+          <Route path="/search" render={() => <SearchPage />}></Route>
+        </Switch>
       </div>
     );
   }
