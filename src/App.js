@@ -5,6 +5,7 @@ import MainBar from "./Components/mainBar";
 import BookShelfChanger from "./Components/BookShelfChanger";
 import Bookshelf from "./Components/Bookshelf";
 import { getAll } from "./BooksAPI";
+import OpenSearchButton from "./Components/OpenSearchButton";
 
 class BooksApp extends React.Component {
   state = {
@@ -99,11 +100,7 @@ class BooksApp extends React.Component {
               <Bookshelf title={"Done"} dataBooks={Read} />
             </div>
           </div>
-          <div className="open-search">
-            <button onClick={() => this.setState({ showSearchPage: true })}>
-              Add a book
-            </button>
-          </div>
+          <OpenSearchButton />
         </div>
       </div>
     );
