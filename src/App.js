@@ -3,6 +3,7 @@ import React from "react";
 import "./App.css";
 import MainBar from "./Components/mainBar";
 import BookShelfChanger from "./Components/BookShelfChanger";
+import Bookshelf from "./Components/Bookshelf";
 
 class BooksApp extends React.Component {
   state = {
@@ -12,59 +13,51 @@ class BooksApp extends React.Component {
      * users can use the browser's back and forward buttons to navigate between
      * pages, as well as provide a good URL they can bookmark and share.
      */
-    showSearchPage: false
+    showSearchPage: false,
+
+    bookshelfs: {
+      CurrentlyReading: [
+        {
+          id: 1,
+          title: "To Kill a Mockingbird",
+          authors: "Harper Lee",
+          url:
+            "http://books.google.com/books/content?id=PGR2AwAAQBAJ&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE73-GnPVEyb7MOCxDzOYF1PTQRuf6nCss9LMNOSWBpxBrz8Pm2_mFtWMMg_Y1dx92HT7cUoQBeSWjs3oEztBVhUeDFQX6-tWlWz1-feexS0mlJPjotcwFqAg6hBYDXuK_bkyHD-y&source=gbs_api"
+        },
+        {
+          id: 2,
+          title: "Ender's Game",
+          authors: "Orson Scott Card",
+          url:
+            "http://books.google.com/books/content?id=yDtCuFHXbAYC&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE72RRiTR6U5OUg3IY_LpHTL2NztVWAuZYNFE8dUuC0VlYabeyegLzpAnDPeWxE6RHi0C2ehrR9Gv20LH2dtjpbcUcs8YnH5VCCAH0Y2ICaKOTvrZTCObQbsfp4UbDqQyGISCZfGN&source=gbs_api"
+        },
+        {
+          id: 3,
+          title: "",
+          authors: "",
+          url: ""
+        }
+      ],
+      WantToRead: [],
+      Read: []
+    }
   };
 
   render() {
+    const {
+      bookshelfs: { CurrentlyReading }
+    } = this.state;
+
     return (
       <div className="app">
         <div className="list-books">
           <MainBar />
           <div className="list-books-content">
             <div>
-              <div className="bookshelf">
-                <h2 className="bookshelf-title">Currently Reading</h2>
-                <div className="bookshelf-books">
-                  <ol className="books-grid">
-                    <li>
-                      <div className="book">
-                        <div className="book-top">
-                          <div
-                            className="book-cover"
-                            style={{
-                              width: 128,
-                              height: 193,
-                              backgroundImage:
-                                'url("http://books.google.com/books/content?id=PGR2AwAAQBAJ&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE73-GnPVEyb7MOCxDzOYF1PTQRuf6nCss9LMNOSWBpxBrz8Pm2_mFtWMMg_Y1dx92HT7cUoQBeSWjs3oEztBVhUeDFQX6-tWlWz1-feexS0mlJPjotcwFqAg6hBYDXuK_bkyHD-y&source=gbs_api")'
-                            }}
-                          ></div>
-                          <BookShelfChanger />
-                        </div>
-                        <div className="book-title">To Kill a Mockingbird</div>
-                        <div className="book-authors">Harper Lee</div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="book">
-                        <div className="book-top">
-                          <div
-                            className="book-cover"
-                            style={{
-                              width: 128,
-                              height: 188,
-                              backgroundImage:
-                                'url("http://books.google.com/books/content?id=yDtCuFHXbAYC&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE72RRiTR6U5OUg3IY_LpHTL2NztVWAuZYNFE8dUuC0VlYabeyegLzpAnDPeWxE6RHi0C2ehrR9Gv20LH2dtjpbcUcs8YnH5VCCAH0Y2ICaKOTvrZTCObQbsfp4UbDqQyGISCZfGN&source=gbs_api")'
-                            }}
-                          ></div>
-                          <BookShelfChanger />
-                        </div>
-                        <div className="book-title">Ender's Game</div>
-                        <div className="book-authors">Orson Scott Card</div>
-                      </div>
-                    </li>
-                  </ol>
-                </div>
-              </div>
+              <Bookshelf
+                title={"Currently Reading"}
+                dataBooks={CurrentlyReading}
+              />
               <div className="bookshelf">
                 <h2 className="bookshelf-title">Want to Read</h2>
                 <div className="bookshelf-books">
