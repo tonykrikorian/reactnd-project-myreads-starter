@@ -2,7 +2,6 @@ import React from "react";
 // import * as BooksAPI from './BooksAPI'
 import "./App.css";
 import MainBar from "./Components/mainBar";
-import BookShelfChanger from "./Components/BookShelfChanger";
 import Bookshelf from "./Components/Bookshelf";
 import { getAll } from "./BooksAPI";
 import OpenSearchButton from "./Components/OpenSearchButton";
