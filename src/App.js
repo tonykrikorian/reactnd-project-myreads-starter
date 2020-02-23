@@ -21,6 +21,7 @@ class BooksApp extends React.Component {
   componentDidMount = async () => {
     const bookshelfs = { ...this.state.bookshelfs };
     const allBooks = await getAll();
+
     console.log(allBooks);
     bookshelfs["currentlyReading"] = allBooks.filter(
       x => x.shelf == "currentlyReading"
@@ -28,7 +29,7 @@ class BooksApp extends React.Component {
     bookshelfs["wantToRead"] = allBooks.filter(x => x.shelf == "wantToRead");
     bookshelfs["read"] = allBooks.filter(x => x.shelf == "read");
 
-    this.setState({ bookshelfs });
+    this.setState({ bookshelfs, allBooks });
   };
 
   handleOnChangeBookShelf = (e, bookId) => {
@@ -38,9 +39,7 @@ class BooksApp extends React.Component {
       currentTarget: { value }
     } = e;
 
-    const booksToMove = allBooks.filter(x => x.id == bookId);
-    let [bookToMove] = booksToMove;
-    console.log(bookToMove);
+    console.log(bookId);
   };
   render() {
     const {
