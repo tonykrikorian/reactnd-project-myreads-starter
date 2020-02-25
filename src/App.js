@@ -31,48 +31,33 @@ class BooksApp extends React.Component {
     this.setState({ bookshelfs, allBooks });
   };
 
-  handleOnChangeBookShelf = (shelfToMove, bookId) => {
-    const allBooks = [...this.state.allBooks];
+  handleOnChangeBookShelf = (shelfToMove, bookId, bookToMove) => {
+    console.log({ bookToMove });
     const bookshelfs = { ...this.state.bookshelfs };
 
     /*
      * Manage BookShelfChanger state value
      */
-    // const {
-    //   currentTarget: { value: shelfToMove }
-    // } = e;
     this.setState({ shelfToMove });
 
     /**
      * Selected book to move and shelf to move
      */
-    const bookToMove = allBooks.find(x => x.id === bookId);
     const { shelf } = bookToMove;
 
     //Change the shelfe of the book to move and set the new value
     bookToMove.shelf = shelfToMove;
+
     bookshelfs[shelf][bookToMove] = bookToMove;
 
     console.log({ bookToMove, shelf, shelfToMove });
 
-    /**
-     * Verify if the book exists in the shelf you want to move
-     */
-    const duplicatedBook = bookshelfs[shelfToMove].filter(x => x.id === bookId);
+    bookshelfs[shelfToMove].push(bookToMove);
 
-    /**
-     * Avoid add duplicated books to shelf
-     */
-    if (duplicatedBook.length === 0) {
-      /**
-       * Add the book to the new shelfbook
-       */
-      bookshelfs[shelfToMove].push(bookToMove);
-
-      bookshelfs[shelf] = bookshelfs[shelf].filter(x => x.shelf === shelf);
-      this.setState({ bookshelfs });
-    } else return;
+    bookshelfs[shelf] = bookshelfs[shelf].filter(x => x.shelf === shelf);
+    this.setState({ bookshelfs });
   };
+
   render() {
     const {
       bookshelfs: { currentlyReading, wantToRead, read, none },
