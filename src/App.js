@@ -57,6 +57,9 @@ class BooksApp extends React.Component {
 
     console.log({ bookToMove, shelf, shelfToMove });
 
+    /**
+     * Verify if the book exists in the shelf you want to move
+     */
     const duplicatedBook = bookshelfs[shelfToMove].filter(x => x.id == bookId);
 
     /**
