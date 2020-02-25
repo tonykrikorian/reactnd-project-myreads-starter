@@ -43,7 +43,12 @@ class BooksApp extends React.Component {
     /**
      * Selected book to move and shelf to move
      */
-    const { shelf } = bookToMove;
+    let shelf = "";
+    if ("shelf" in bookToMove) {
+      shelf = bookToMove.shelf;
+    } else {
+      shelf = "none";
+    }
 
     //Change the shelfe of the book to move and set the new value
     bookToMove.shelf = shelfToMove;
