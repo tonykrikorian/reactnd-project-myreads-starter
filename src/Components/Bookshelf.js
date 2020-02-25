@@ -28,6 +28,7 @@ const Bookshelf = ({
                     handleOnChangeBookShelf={handleOnChangeBookShelf}
                     bookId={book.id}
                     shelfToMove={shelfToMove}
+                    actualShelf={book.shelf}
                   />
                 </div>
                 <div className="book-title">{book.title}</div>
