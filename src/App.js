@@ -15,7 +15,8 @@ class BooksApp extends React.Component {
       wantToRead: [],
       read: []
     },
-    allBooks: []
+    allBooks: [],
+    shelfToMove: ""
   };
 
   componentDidMount = async () => {
@@ -38,6 +39,7 @@ class BooksApp extends React.Component {
     const {
       currentTarget: { value: shelfToMove }
     } = e;
+    this.setState({ shelfToMove });
     const bookToMove = allBooks.find(x => x.id === bookId);
     const { shelf } = bookToMove;
     bookToMove.shelf = shelfToMove;
@@ -49,10 +51,11 @@ class BooksApp extends React.Component {
   };
   render() {
     const {
-      bookshelfs: { currentlyReading, wantToRead, read }
+      bookshelfs: { currentlyReading, wantToRead, read },
+      shelfToMove
     } = this.state;
 
-    const data = { currentlyReading, wantToRead, read };
+    const data = { currentlyReading, wantToRead, read, shelfToMove };
     return (
       <div className="app">
         <Switch>
