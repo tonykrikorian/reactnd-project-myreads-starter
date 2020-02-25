@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { getAll } from "./BooksAPI";
+import { getAll, update } from "./BooksAPI";
 import MainContainer from "./Components/MainContainer";
 import { Route, Switch } from "react-router-dom";
 import SearchPage from "./Components/SearchPage";
@@ -31,7 +31,7 @@ class BooksApp extends React.Component {
     this.setState({ bookshelfs, allBooks });
   };
 
-  handleOnChangeBookShelf = (shelfToMove, bookId, bookToMove) => {
+  handleOnChangeBookShelf = async (shelfToMove, bookId, bookToMove) => {
     console.log({ bookToMove });
     const bookshelfs = { ...this.state.bookshelfs };
 
@@ -61,6 +61,8 @@ class BooksApp extends React.Component {
 
     bookshelfs[shelf] = bookshelfs[shelf].filter(x => x.shelf === shelf);
     this.setState({ bookshelfs });
+
+    await update(bookToMove, shelfToMove);
   };
 
   render() {

@@ -32,7 +32,7 @@ class MainContainer extends Component {
               shelfToMove={shelfToMove}
             />
             <Bookshelf
-              title={"Done"}
+              title={"Read"}
               dataBooks={read}
               handleOnChangeBookShelf={handleOnChangeBookShelf}
               shelfToMove={shelfToMove}
