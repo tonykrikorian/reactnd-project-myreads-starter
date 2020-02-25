@@ -13,7 +13,8 @@ class BooksApp extends React.Component {
     bookshelfs: {
       currentlyReading: [],
       wantToRead: [],
-      read: []
+      read: [],
+      none: []
     },
     allBooks: [],
     shelfToMove: ""
@@ -77,11 +78,11 @@ class BooksApp extends React.Component {
   };
   render() {
     const {
-      bookshelfs: { currentlyReading, wantToRead, read },
+      bookshelfs: { currentlyReading, wantToRead, read, none },
       shelfToMove
     } = this.state;
 
-    const data = { currentlyReading, wantToRead, read, shelfToMove };
+    const data = { currentlyReading, wantToRead, read, shelfToMove, none };
     return (
       <div className="app">
         <Switch>
