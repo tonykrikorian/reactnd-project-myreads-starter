@@ -1,11 +1,8 @@
 import React from "react";
-// import * as BooksAPI from './BooksAPI'
 import "./App.css";
-
 import { getAll } from "./BooksAPI";
-
 import MainContainer from "./Components/MainContainer";
-import { Router, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import SearchPage from "./Components/SearchPage";
 
 class BooksApp extends React.Component {
@@ -26,10 +23,10 @@ class BooksApp extends React.Component {
 
     console.log(allBooks);
     bookshelfs["currentlyReading"] = allBooks.filter(
-      x => x.shelf == "currentlyReading"
+      x => x.shelf === "currentlyReading"
     );
-    bookshelfs["wantToRead"] = allBooks.filter(x => x.shelf == "wantToRead");
-    bookshelfs["read"] = allBooks.filter(x => x.shelf == "read");
+    bookshelfs["wantToRead"] = allBooks.filter(x => x.shelf === "wantToRead");
+    bookshelfs["read"] = allBooks.filter(x => x.shelf === "read");
 
     this.setState({ bookshelfs, allBooks });
   };
@@ -61,7 +58,7 @@ class BooksApp extends React.Component {
     /**
      * Verify if the book exists in the shelf you want to move
      */
-    const duplicatedBook = bookshelfs[shelfToMove].filter(x => x.id == bookId);
+    const duplicatedBook = bookshelfs[shelfToMove].filter(x => x.id === bookId);
 
     /**
      * Avoid add duplicated books to shelf
@@ -72,7 +69,7 @@ class BooksApp extends React.Component {
        */
       bookshelfs[shelfToMove].push(bookToMove);
 
-      bookshelfs[shelf] = bookshelfs[shelf].filter(x => x.shelf == shelf);
+      bookshelfs[shelf] = bookshelfs[shelf].filter(x => x.shelf === shelf);
       this.setState({ bookshelfs });
     } else return;
   };
