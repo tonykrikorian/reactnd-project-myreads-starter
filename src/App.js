@@ -36,18 +36,41 @@ class BooksApp extends React.Component {
   handleOnChangeBookShelf = (e, bookId) => {
     const allBooks = [...this.state.allBooks];
     const bookshelfs = { ...this.state.bookshelfs };
+
+    /*
+     * Manage BookShelfChanger state value
+     */
     const {
       currentTarget: { value: shelfToMove }
     } = e;
     this.setState({ shelfToMove });
+
+    /**
+     * Selected book to move and shelf to move
+     */
     const bookToMove = allBooks.find(x => x.id === bookId);
     const { shelf } = bookToMove;
+
+    //Change the shelfe of the book to move and set the new value
     bookToMove.shelf = shelfToMove;
     bookshelfs[shelf][bookToMove] = bookToMove;
+
     console.log({ bookToMove, shelf, shelfToMove });
-    bookshelfs[shelfToMove].push(bookToMove);
-    bookshelfs[shelf] = bookshelfs[shelf].filter(x => x.shelf == shelf);
-    this.setState({ bookshelfs });
+
+    const duplicatedBook = bookshelfs[shelfToMove].filter(x => x.id == bookId);
+
+    /**
+     * Avoid add duplicated books to shelf
+     */
+    if (duplicatedBook.length === 0) {
+      /**
+       * Add the book to the new shelfbook
+       */
+      bookshelfs[shelfToMove].push(bookToMove);
+
+      bookshelfs[shelf] = bookshelfs[shelf].filter(x => x.shelf == shelf);
+      this.setState({ bookshelfs });
+    } else return;
   };
   render() {
     const {
