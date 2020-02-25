@@ -27,6 +27,7 @@ const Bookshelf = ({
                   <BookShelfChanger
                     handleOnChangeBookShelf={handleOnChangeBookShelf}
                     bookId={book.id}
+                    book={book}
                     shelfToMove={shelfToMove}
                     actualShelf={book.shelf ? book.shelf : "none"}
                   />

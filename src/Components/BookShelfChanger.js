@@ -9,13 +9,13 @@ class BookShelfChanger extends Component {
   }
 
   handleOnChangeBookshelf = e => {
-    const { handleOnChangeBookShelf, bookId } = this.props;
+    const { handleOnChangeBookShelf, bookId, book } = this.props;
     const {
       currentTarget: { value: shelfToMoveValue }
     } = e;
     console.log({ shelfToMoveValue });
     this.setState({ shelfToMoveValue });
-    handleOnChangeBookShelf(shelfToMoveValue, bookId);
+    handleOnChangeBookShelf(shelfToMoveValue, bookId, book);
   };
   render() {
     return (
