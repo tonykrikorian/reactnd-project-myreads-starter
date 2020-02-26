@@ -11,8 +11,7 @@ class MainContainer extends Component {
       wantToRead,
       read,
       handleOnChangeBookShelf,
-      shelfToMove,
-      none
+      shelfToMove
     } = this.props;
     return (
       <div className="list-books">
