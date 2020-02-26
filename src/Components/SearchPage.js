@@ -50,10 +50,14 @@ class SearchPage extends Component {
         </div>
         <div className="search-books-results">
           <ol className="books-grid">
-            <Bookshelf
-              dataBooks={searchResult}
-              handleOnChangeBookShelf={handleOnChangeBookShelf}
-            />
+            {this.state.textSearch === "" ? (
+              <span>Search a book</span>
+            ) : (
+              <Bookshelf
+                dataBooks={searchResult}
+                handleOnChangeBookShelf={handleOnChangeBookShelf}
+              />
+            )}
           </ol>
         </div>
       </div>
