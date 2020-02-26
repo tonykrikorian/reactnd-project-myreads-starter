@@ -37,12 +37,6 @@ class MainContainer extends Component {
               handleOnChangeBookShelf={handleOnChangeBookShelf}
               shelfToMove={shelfToMove}
             />
-            <Bookshelf
-              title={"None"}
-              dataBooks={none}
-              handleOnChangeBookShelf={handleOnChangeBookShelf}
-              shelfToMove={shelfToMove}
-            />
           </div>
         </div>
         <OpenSearchButton />
