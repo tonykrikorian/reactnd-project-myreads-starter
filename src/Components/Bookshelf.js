@@ -1,5 +1,6 @@
 import React from "react";
 import BookShelfChanger from "../Components/BookShelfChanger";
+import PropTypes from "prop-types";
 
 const Bookshelf = ({
   title,
@@ -7,6 +8,11 @@ const Bookshelf = ({
   handleOnChangeBookShelf,
   shelfToMove
 }) => {
+  Bookshelf.PropTypes = {
+    dataBooks: PropTypes.array.isRequired,
+    handleOnChangeBookShelf: PropTypes.func.isRequired,
+    shelfToMove: PropTypes.string.isRequired
+  };
   return (
     <div className="bookshelf">
       <h2 className="bookshelf-title">{title}</h2>

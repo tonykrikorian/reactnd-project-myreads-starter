@@ -13,14 +13,16 @@ class SearchPage extends Component {
     const {
       currentTarget: { value: textSearch }
     } = e;
+
     this.setState({ textSearch });
 
-    const searchResult = await search(this.state.textSearch);
-
-    if (searchResult) {
-      this.setState({ searchResult });
-      console.log(searchResult);
-    }
+    setTimeout(async () => {
+      const searchResult = await search(this.state.textSearch);
+      if (searchResult) {
+        this.setState({ searchResult });
+        console.log(searchResult);
+      }
+    }, 100);
   };
   render() {
     const { searchResult } = this.state;
