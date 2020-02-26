@@ -51,9 +51,9 @@ const Bookshelf = ({
     </div>
   );
 };
-Bookshelf.PropTypes = {
+Bookshelf.propTypes = {
   dataBooks: PropTypes.array.isRequired,
   handleOnChangeBookShelf: PropTypes.func.isRequired,
-  shelfToMove: PropTypes.string.isRequired
+  shelfToMove: PropTypes.string
 };
 export default Bookshelf;
