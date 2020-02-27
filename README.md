@@ -1,6 +1,6 @@
 # MyReads Project
 
-This projects implements a book library, the application allows search books, adds thats books to a certain shelf, and from main page, moves the books between shelfs
+This projects implements a book library, the application allows search books, adds thats books to a certain shelf, and from main page, moves the books between shelfs and connects to API to store the data on the server
 
 ## TL;DR
 
