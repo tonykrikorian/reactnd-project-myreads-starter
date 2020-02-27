@@ -4,10 +4,14 @@ import { search } from "../BooksAPI";
 import Bookshelf from "./Bookshelf";
 
 class SearchPage extends Component {
-  state = {
-    textSearch: "",
-    searchResult: []
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      textSearch: "",
+      searchResult: [],
+      allBooks: props.allBooks
+    };
+  }
 
   handleOnChange = async e => {
     const {
@@ -26,7 +30,7 @@ class SearchPage extends Component {
   };
   render() {
     const { searchResult } = this.state;
-    const { handleOnChangeBookShelf } = this.props;
+    const { handleOnChangeBookShelf, allBooks } = this.props;
     return (
       <div className="search-books">
         <div className="search-books-bar">
