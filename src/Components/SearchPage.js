@@ -9,7 +9,8 @@ class SearchPage extends Component {
     this.state = {
       textSearch: "",
       searchResult: [],
-      allBooks: props.allBooks
+      allBooks: props.allBooks,
+      error: { error: "empty query", items: Array(0) }
     };
   }
 
@@ -22,15 +23,18 @@ class SearchPage extends Component {
     this.setState({ textSearch });
 
     setTimeout(async () => {
-      const searchResult = await search(this.state.textSearch);
-      if (searchResult) {
-        //Devuelve el array de la busqueda con los libros que coinciden
+      let searchResult = await search(this.state.textSearch);
+      searchResult =
+        searchResult === undefined ? this.state.error : searchResult;
+
+      if (!("error" in searchResult)) {
         const searchResultModified = searchResult.map(book => {
           return allBooks.find(x => x.id === book.id) || book;
         });
         console.log({ searchResultModified });
         this.setState({ searchResult: searchResultModified });
-        console.log(searchResult);
+      } else {
+        this.setState({ searchResult: this.state.error });
       }
     }, 100);
   };
