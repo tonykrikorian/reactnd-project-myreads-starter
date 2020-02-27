@@ -25,11 +25,11 @@ class SearchPage extends Component {
       const searchResult = await search(this.state.textSearch);
       if (searchResult) {
         //Devuelve el array de la busqueda con los libros que coinciden
-        const serachResultModified = searchResult.map(book => {
+        const searchResultModified = searchResult.map(book => {
           return allBooks.find(x => x.id === book.id) || book;
         });
-        console.log({ serachResultModified });
-        this.setState({ searchResult: serachResultModified });
+        console.log({ searchResultModified });
+        this.setState({ searchResult: searchResultModified });
         console.log(searchResult);
       }
     }, 100);
