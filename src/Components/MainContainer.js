@@ -11,8 +11,7 @@ class MainContainer extends Component {
       wantToRead,
       read,
       handleOnChangeBookShelf,
-      shelfToMove,
-      none
+      shelfToMove
     } = this.props;
     return (
       <div className="list-books">
@@ -34,12 +33,6 @@ class MainContainer extends Component {
             <Bookshelf
               title={"Read"}
               dataBooks={read}
-              handleOnChangeBookShelf={handleOnChangeBookShelf}
-              shelfToMove={shelfToMove}
-            />
-            <Bookshelf
-              title={"None"}
-              dataBooks={none}
               handleOnChangeBookShelf={handleOnChangeBookShelf}
               shelfToMove={shelfToMove}
             />

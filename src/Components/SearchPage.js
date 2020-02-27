@@ -4,12 +4,17 @@ import { search } from "../BooksAPI";
 import Bookshelf from "./Bookshelf";
 
 class SearchPage extends Component {
-  state = {
-    textSearch: "",
-    searchResult: []
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      textSearch: "",
+      searchResult: [],
+      allBooks: props.allBooks
+    };
+  }
 
   handleOnChange = async e => {
+    const { allBooks } = this.state;
     const {
       currentTarget: { value: textSearch }
     } = e;
@@ -19,7 +24,12 @@ class SearchPage extends Component {
     setTimeout(async () => {
       const searchResult = await search(this.state.textSearch);
       if (searchResult) {
-        this.setState({ searchResult });
+        //Devuelve el array de la busqueda con los libros que coinciden
+        const serachResultModified = searchResult.map(book => {
+          return allBooks.find(x => x.id === book.id) || book;
+        });
+        console.log({ serachResultModified });
+        this.setState({ searchResult: serachResultModified });
         console.log(searchResult);
       }
     }, 100);

@@ -68,7 +68,8 @@ class BooksApp extends React.Component {
   render() {
     const {
       bookshelfs: { currentlyReading, wantToRead, read, none },
-      shelfToMove
+      shelfToMove,
+      allBooks
     } = this.state;
 
     const data = { currentlyReading, wantToRead, read, shelfToMove, none };
@@ -89,6 +90,7 @@ class BooksApp extends React.Component {
             path="/search"
             render={() => (
               <SearchPage
+                allBooks={allBooks}
                 handleOnChangeBookShelf={this.handleOnChangeBookShelf}
               />
             )}
