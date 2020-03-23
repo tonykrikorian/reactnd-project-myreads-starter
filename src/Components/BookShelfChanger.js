@@ -8,6 +8,9 @@ class BookShelfChanger extends Component {
     };
   }
 
+  /**
+   * Metodo para manejar el evento del bookshelf
+   */
   handleOnChangeBookshelf = e => {
     const { handleOnChangeBookShelf, bookId, book } = this.props;
     const {
