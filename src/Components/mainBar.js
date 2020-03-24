@@ -2,6 +2,7 @@ import React from "react";
 
 /**
  * Este componente solo renderiza el toolbar
+ * Renderiza solo el componente mainbar
  */
 const MainBar = () => {
   return (
