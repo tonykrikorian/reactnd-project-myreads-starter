@@ -1,5 +1,8 @@
 import React from "react";
 
+/**
+ * Este componente solo renderiza el toolbar
+ */
 const MainBar = () => {
   return (
     <div className="list-books-title">
