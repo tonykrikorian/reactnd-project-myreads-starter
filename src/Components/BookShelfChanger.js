@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 
+/**
+ * Esta clase es para manejar el traslado de libros entre bookshlefs
+ */
 class BookShelfChanger extends Component {
   constructor(props) {
     super(props);
